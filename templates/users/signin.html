@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% block title %} Register {% endblock %}
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+
+    {% if successfull %}
+        <h5>{{ successfull }}</h5>        
+    {% endif %}
+
+    <input type="text" placeholder="username" name="username">
+    {% if form.errors.username %}
+        {{form.errors.username}}
+    {% endif %}
+    <input type="password" placeholder="password" name="password">
+    {% if form.errors.password %}
+        {{form.errors.password}}
+    {% endif %}
+    <input type="password" placeholder="password_confirmation" name="password_confirmation">
+    {% if form.errors.password_confirmation %}
+        {{form.errors.password_confirmation}}
+    {% endif %}
+    <button type="submit">Acept</button>
+</form>
+{% endblock %}
